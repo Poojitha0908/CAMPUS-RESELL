@@ -41,7 +41,7 @@ const STATIC_FEATURED = [
     description:
       "Barely used MacBook Air M2 with 8GB RAM, 256GB SSD. Battery health 97%. Comes with original charger & box.",
     image:
-      `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/uploads/macbook_air_m2.jpg`,
+      `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/uploads/macbook_air_m2.png`,
   },
   {
     id: "feat-2",
