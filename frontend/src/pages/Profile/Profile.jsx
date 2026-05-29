@@ -151,7 +151,7 @@ const Profile = () => {
           <div className="relative mx-auto w-36">
             {preview || user?.avatar ? (
               <img
-                src={preview || `http://localhost:5000/${user.avatar}`}
+                src={preview || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/${user.avatar}`}
                 alt={user.name}
                 className="h-36 w-36 rounded-full border-4 border-blue-50 object-cover shadow-lg dark:border-slate-800"
               />

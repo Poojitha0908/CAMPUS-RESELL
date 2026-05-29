@@ -153,7 +153,7 @@ const Sidebar = ({ collapsed, mobileOpen, onCloseMobile, onToggleCollapse }) => 
               <div className={`mb-3 flex items-center gap-3 rounded-xl bg-muted/50 p-3 border border-border ${collapsed ? "lg:justify-center" : ""}`}>
                 {user?.avatar ? (
                   <img
-                    src={`http://localhost:5000/${user.avatar}`}
+                    src={`${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/${user.avatar}`}
                     alt={user?.name || "User"}
                     className="h-10 w-10 rounded-full border border-indigo-500/20 dark:border-indigo-500/30 object-cover shrink-0"
                   />

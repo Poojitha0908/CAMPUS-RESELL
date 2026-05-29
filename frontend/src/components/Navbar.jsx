@@ -47,7 +47,7 @@ const Navbar = () => {
         <Link to="/profile">
           {user?.avatar ? (
             <img
-              src={`http://localhost:5000/${user.avatar}`}
+              src={`${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/${user.avatar}`}
               alt="avatar"
               className="w-9 h-9 rounded-full object-cover border cursor-pointer"
             />
