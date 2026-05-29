@@ -8,7 +8,9 @@ import useAuth from "../../hooks/useAuth";
 const getImageSrc = (src) => {
   if (!src) return "/default-product.png";
   if (src.startsWith("http") || src.startsWith("/")) return src;
-  return `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/${src}`;
+  const backendUrl = (import.meta.env.VITE_BACKEND_URL || "http://localhost:5000").replace(/\/$/, "");
+  const cleanSrc = src.replace(/^\//, "");
+  return `${backendUrl}/${cleanSrc}`;
 };
 
 const MyProducts = () => {
