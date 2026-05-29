@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/set-state-in-effect, react-refresh/only-export-components */
 import { createContext, useEffect, useState } from "react";
 import API from "../services/api";
 import { socket } from "../sockets/socket";
 
-export const AuthContext = createContext(); // 👈 IMPORTANT export
+export const AuthContext = createContext(); //  IMPORTANT export
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -22,7 +23,7 @@ export const AuthProvider = ({ children }) => {
       setUser(data);
       // Connect socket after user is loaded
       socket.connect();
-    } catch (err) {
+    } catch {
       localStorage.removeItem("token");
       setUser(null);
     } finally {

@@ -1,11 +1,11 @@
 import axios from "axios";
 
-// 🌐 Base URL of backend
+//  Base URL of backend
 const API = axios.create({
-  baseURL: "http://localhost:5001/api",
+  baseURL: "http://localhost:5000/api",
 });
 
-// 🔐 Automatically attach token to every request
+//  Automatically attach token to every request
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token");
 

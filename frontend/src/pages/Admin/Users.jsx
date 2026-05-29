@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
 import API from "../../services/api";
 import Loader from "../../components/Loader";
@@ -6,7 +7,7 @@ const Users = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 📥 Fetch all users
+  //  Fetch all users
   const fetchUsers = async () => {
     try {
       const { data } = await API.get("/users/admin/all");
@@ -22,7 +23,7 @@ const Users = () => {
     fetchUsers();
   }, []);
 
-  // 🔨 Ban / Unban User
+  //  Ban / Unban User
   const toggleBan = async (userId) => {
     try {
       const { data } = await API.put(`/users/admin/ban/${userId}`);

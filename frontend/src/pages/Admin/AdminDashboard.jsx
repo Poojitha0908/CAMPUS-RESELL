@@ -12,7 +12,7 @@ const AdminDashboard = () => {
       try {
         const { data } = await API.get("/users/admin/stats");
         setStats(data.stats);
-      } catch (err) {
+      } catch {
         console.error("Failed to load stats");
       } finally {
         setLoading(false);

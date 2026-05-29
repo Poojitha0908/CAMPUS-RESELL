@@ -12,15 +12,15 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md px-6 py-3 flex justify-between items-center">
+    <nav className="sticky top-0 z-50 border-b border-slate-800 bg-[#071133] px-6 py-3 flex justify-between items-center backdrop-blur-xl">
   
-  <Link to="/" className="text-xl font-bold text-blue-600">
+  <Link to="/" className="text-xl font-black text-cyan-400">
     Campus Resell
   </Link>
 
   <div className="flex items-center gap-4">
 
-    <Link to="/" className="hover:text-blue-500">
+    <Link to="/" className="text-slate-200 hover:text-cyan-400 transition">
       Home
     </Link>
 
@@ -45,15 +45,17 @@ const Navbar = () => {
 
         {/* ✅ SINGLE Avatar ONLY */}
         <Link to="/profile">
-          <img
-            src={
-              user?.avatar
-                ? `http://localhost:5001/${user.avatar}`
-                : "/default-avatar.png"
-            }
-            alt="avatar"
-            className="w-9 h-9 rounded-full object-cover border cursor-pointer"
-          />
+          {user?.avatar ? (
+            <img
+              src={`http://localhost:5000/${user.avatar}`}
+              alt="avatar"
+              className="w-9 h-9 rounded-full object-cover border cursor-pointer"
+            />
+          ) : (
+            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-tr from-accent-indigo to-indigo-400 text-xs font-black text-white shadow-md shadow-indigo-500/20 border border-indigo-500/20 select-none uppercase cursor-pointer">
+              {(user?.name?.[0] || "U")}
+            </span>
+          )}
         </Link>
 
         <button

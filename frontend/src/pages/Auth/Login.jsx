@@ -5,7 +5,6 @@ import { loginUser } from "../../services/authService";
 import useAuth from "../../hooks/useAuth";
 import Button from "../../components/ui/Button";
 import Card from "../../components/ui/Card";
-import Icon from "../../components/ui/Icon";
 import { isValidEmail } from "../../utils/emailValidation";
 
 const Login = () => {
@@ -31,7 +30,7 @@ const Login = () => {
       const normalizedEmail = form.email.toLowerCase().trim();
 
       if (!isValidEmail(normalizedEmail)) {
-        toast.error("Use a valid public or institutional email");
+        toast.error("Use your roll number email: rollnumber@anurag.edu.in");
         return;
       }
 
@@ -63,21 +62,14 @@ const Login = () => {
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-blue-600 text-xl font-black text-white shadow-lg shadow-blue-200 dark:shadow-none">
                 C
               </span>
-              <span className="text-xl font-black">Campus Resell</span>
+              <span className="text-xl font-black">Campus Resell Portal</span>
             </Link>
-            <p className="text-sm font-bold uppercase tracking-widest text-blue-600">Campus marketplace</p>
-            <h1 className="mt-4 text-5xl font-black leading-tight">Buy, sell, and chat with your campus community.</h1>
+            <p className="text-sm font-bold uppercase tracking-widest text-blue-600">Uni marketplace</p>
+            <h1 className="mt-4 text-5xl font-black leading-tight">Trade smarter within your campus network.</h1>
             <p className="mt-5 text-base leading-7 text-slate-600 dark:text-slate-400">
-              Access your listings, saved products, and conversations from a polished workspace built for quick campus deals.
+              Discover affordable student deals, connect with buyers instantly, and manage listings with ease.
             </p>
-            <div className="mt-8 grid grid-cols-3 gap-4">
-              {["Verified users", "Fast listings", "Direct chats"].map((item) => (
-                <Card key={item} className="p-4">
-                  <Icon name="spark" className="mb-3 h-5 w-5 text-blue-600" />
-                  <p className="text-sm font-bold text-slate-950 dark:text-white">{item}</p>
-                </Card>
-              ))}
-            </div>
+            
           </div>
         </section>
 
@@ -96,7 +88,7 @@ const Login = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="you@college.edu"
+                placeholder="22A91A0501@anurag.edu.in"
                 value={form.email}
                 onChange={handleChange}
                 required

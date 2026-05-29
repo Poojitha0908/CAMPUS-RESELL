@@ -1,73 +1,115 @@
 # Campus Resell Portal
 
-Premium campus marketplace for buying, selling, saving, reviewing, reporting, and chatting about student-to-student listings.
+Campus Resell Portal is a MERN stack web application developed for students to buy, sell, and exchange used products within a college campus community.
 
-Campus Resell Portal is a full MERN application with authenticated product listing flows, wishlist management, real-time chat, admin moderation, notifications, reviews, profile management, avatar uploads, and a polished responsive SaaS-style interface.
+The platform allows students to create listings, upload product images, chat with buyers, save wishlist items, manage profiles, and securely interact with other campus users through a modern responsive interface.
 
-## Architecture
+---
 
-```mermaid
-flowchart LR
-  User["Student / Admin"] --> Client["React + Tailwind Frontend"]
-  Client --> API["Express REST API"]
-  Client <-->|Socket.IO| Realtime["Socket.IO Chat Gateway"]
-  API --> DB["MongoDB / Mongoose"]
-  API --> Uploads["Local Upload Storage"]
-  API --> Mail["Nodemailer Email Service"]
-  Realtime --> DB
-  API --> Auth["JWT Auth + Role Guards"]
-```
+## Features
 
-## Key Features
+### User Features
+- User registration and login
+- JWT authentication
+- Add, edit, and delete products
+- Upload product images
+- Wishlist management
+- Real-time chat system
+- Product reviews and ratings
+- Search and filter products
+- Profile management
+- Dark mode support
 
-- Premium responsive UI with collapsible sidebar, dark mode, skeleton loaders, empty states, and toast notifications.
-- Product marketplace with search, filters, categories, reviews, image uploads, status badges, wishlist, and seller controls.
-- Real-time chat with message status, typing indicators, per-message actions, chat deletion, reporting, and unread counts.
-- Secure authentication with JWT, password reset flow, avatar uploads, profile editing, and robust public/institutional email validation.
-- Admin tools for user management, reports, moderation, banning, and system stats.
-- Production-minded backend structure with controllers, routes, middleware, services, Mongoose models, and Socket.IO integration.
+### Admin Features
+- Manage users
+- View reported products
+- Moderate listings
+- Access admin dashboard
 
-## Tech Stack Matrix
+---
+
+## Tech Stack
 
 | Layer | Technologies |
 | --- | --- |
-| Frontend | React 19, Vite, React Router, Tailwind CSS 4, Axios, React Hot Toast, Socket.IO Client |
-| Backend | Node.js, Express 5, JWT, bcryptjs, Multer, Nodemailer, Socket.IO |
-| Database | MongoDB, Mongoose schemas, indexed user/product fields |
-| DevOps | Vite production build, npm scripts, environment-driven backend config |
+| Frontend | React, Vite, Tailwind CSS, Axios |
+| Backend | Node.js, Express.js |
+| Database | MongoDB, Mongoose |
+| Authentication | JWT, bcryptjs |
+| Real-time Chat | Socket.IO |
+| File Uploads | Multer |
+| Email Service | Nodemailer |
 
-## Quick Start
+---
 
-Run the backend and frontend in two terminals:
-
-```bash
-cd backend && npm install && npm run dev
-```
-
-```bash
-cd frontend && npm install && npm run dev
-```
-
-Default local URLs:
-
-- Frontend: `http://localhost:5173`
-- Backend: `http://localhost:5001`
-
-## Environment Overview
-
-Backend expects MongoDB, JWT, and optional email credentials in `backend/.env`. Frontend can run with the default API configuration used in `src/services/api.js`.
-
-## Repository Structure
+## Project Structure
 
 ```text
 Campus-Resell-Portal/
-  backend/      Express API, Socket.IO, MongoDB models, uploads, services
-  frontend/     React client, route pages, UI components, context, services
-```
+│
+├── backend/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── uploads/
+│   └── server.js
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── vite.config.js
+│
+└── README.md
 
-## Production Readiness Notes
+## Installation:
 
-- Keep secrets in environment files and never commit real credentials.
-- Configure CORS origins before public deployment.
-- Move local uploads to object storage for distributed deployments.
-- Add CI checks for `npm run build`, lint, and API smoke tests before merging.
+Clone Repository
+git clone <repository-url>
+cd campus-resell-portal
+Backend Setup
+cd backend
+npm install
+npm run dev
+
+Create a .env file inside backend folder:
+
+PORT=5001
+DB_URL=your_mongodb_connection
+JWT_SECRET=your_secret_key
+EMAIL_USER=your_email
+EMAIL_PASS=your_password
+Frontend Setup
+cd frontend
+npm install
+npm run dev
+Local Development URLs
+
+Frontend:
+
+http://localhost:5173
+
+Backend:
+
+http://localhost:5001
+
+
+Main Functionalities:
+-Product listing system
+-Product search and filtering
+-Real-time messaging
+-Wishlist system
+-User authentication
+-Admin moderation tools
+-Responsive UI for desktop and mobile
+
+Future Improvements:
+-Online payment integration
+-AI-based product recommendations
+-College email verification
+-Cloud image storage
+-Notification system
+
+
+Author:
+Dasari Poojitha

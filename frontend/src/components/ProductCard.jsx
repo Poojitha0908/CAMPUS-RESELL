@@ -7,7 +7,7 @@ import Icon from "./ui/Icon";
 const getImageSrc = (src) => {
   if (!src) return "/default-product.png";
   if (src.startsWith("http") || src.startsWith("/")) return src;
-  return `http://localhost:5001/${src}`;
+  return `http://localhost:5000/${src}`;
 };
 
 const ProductCard = ({ product, onRemoveFromWishlist, onWishlistToggle }) => {
@@ -42,6 +42,17 @@ const ProductCard = ({ product, onRemoveFromWishlist, onWishlistToggle }) => {
         <div>
           <h2 className="truncate text-lg font-bold text-text-primary dark:text-white tracking-tight">{product.title}</h2>
           <p className="mt-1 text-sm text-text-secondary">{product.category || "Campus item"}</p>
+        </div>
+
+        {product.description && (
+          <p className="line-clamp-2 text-xs text-text-secondary">
+            {product.description}
+          </p>
+        )}
+
+        <div className="flex items-center justify-between mt-1 text-xs text-text-secondary">
+          <span className="flex items-center gap-1"><Icon name="map-pin" className="h-3 w-3" /> {product.location || 'Campus'}</span>
+          <span className="flex items-center gap-1"><Icon name="eye" className="h-3 w-3" /> {product.views || 0} views</span>
         </div>
 
         <div className="flex items-center justify-between gap-3">

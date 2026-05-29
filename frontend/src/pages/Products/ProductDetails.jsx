@@ -149,8 +149,10 @@ const ProductDetails = () => {
     );
   }
 
-  const isOwner = user && product.seller?._id === user._id;
-  const canContactSeller = user && product.seller?._id && !isOwner;
+  const isOwner =
+    user && product.seller?._id?.toString() === user._id?.toString();
+  const canContactSeller =
+    user && product.seller?._id && !isOwner;
 
   return (
     <div className="mx-auto max-w-7xl space-y-8">
@@ -242,8 +244,10 @@ const ProductDetails = () => {
             </div>
           </div>
 
+          {/* ── Action Buttons ── */}
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            {canContactSeller && (
+            {/* Buyer: logged in, not the seller */}
+            {canContactSeller && product.status === "available" && (
               <button
                 type="button"
                 className="rounded-xl bg-accent-indigo px-5 py-3 text-sm font-bold text-white shadow-lg shadow-accent-indigo/20 transition hover:bg-accent-indigo/90 active:scale-95"
@@ -256,25 +260,45 @@ const ProductDetails = () => {
                   }
                 }}
               >
-                Chat with Seller
+                💬 Buy / Contact Seller
               </button>
             )}
 
+            {/* Not logged in — show login prompt */}
+            {!user && product.status === "available" && (
+              <button
+                type="button"
+                className="rounded-xl bg-accent-indigo px-5 py-3 text-sm font-bold text-white shadow-lg shadow-accent-indigo/20 transition hover:bg-accent-indigo/90 active:scale-95"
+                onClick={() => navigate("/login")}
+              >
+                🔑 Login to Buy
+              </button>
+            )}
+
+            {/* Sold badge */}
+            {product.status === "sold" && (
+              <div className="rounded-xl bg-red-500/10 px-5 py-3 text-center text-sm font-bold text-red-400">
+                ❌ This item has been sold
+              </div>
+            )}
+
+            {/* Wishlist for logged-in users */}
             {user && (
               <button
                 type="button"
                 onClick={handleWishlistToggle}
                 className={`rounded-xl border px-5 py-3 text-sm font-bold transition active:scale-95 ${
                   wishlisted
-                    ? "border-red-500/20 bg-red-500/10 text-red-400 hover:bg-red-500/20" // Red for wishlisted
-                    : "border-border bg-muted/50 text-text-secondary hover:border-accent-indigo/50 hover:text-accent-indigo" // Default for not wishlisted
+                    ? "border-red-500/20 bg-red-500/10 text-red-400 hover:bg-red-500/20"
+                    : "border-border bg-muted/50 text-text-secondary hover:border-accent-indigo/50 hover:text-accent-indigo"
                 }`}
               >
-                {wishlisted ? "Wishlisted" : "Add to Wishlist"}
+                {wishlisted ? "❤️ Wishlisted" : "🤍 Add to Wishlist"}
               </button>
             )}
           </div>
 
+          {/* Owner controls */}
           {isOwner && (
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               <button

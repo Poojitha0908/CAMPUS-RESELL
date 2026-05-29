@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useState } from "react";
 import { getMyProducts, deleteProduct, updateProductStatus } from "../../services/productService";
 import Loader from "../../components/Loader";

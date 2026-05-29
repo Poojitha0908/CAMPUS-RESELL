@@ -8,7 +8,7 @@ import useAuth from "../../hooks/useAuth";
 const getImageSrc = (src) => {
   if (!src) return "/default-product.png";
   if (src.startsWith("http") || src.startsWith("/")) return src;
-  return `http://localhost:5001/${src}`;
+  return `http://localhost:5000/${src}`;
 };
 
 const MyProducts = () => {
@@ -16,24 +16,24 @@ const MyProducts = () => {
   const [loading, setLoading] = useState(true);
   const { setUser } = useAuth();
 
-  const fetchUserProducts = async () => {
-    try {
-      const data = await getMyProducts();
-      // Safely access products and default to empty array
-      setProducts(data?.products || []);
-      if (setUser && data?.products) {
-        setUser(prev => ({ ...prev, totalListings: data.products.length }));
-      }
-    } catch (err) {
-      console.error("Failed to fetch products", err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchUserProducts = async () => {
+      try {
+        const data = await getMyProducts();
+        // Safely access products and default to empty array
+        setProducts(data?.products || []);
+        if (setUser && data?.products) {
+          setUser(prev => ({ ...prev, totalListings: data.products.length }));
+        }
+      } catch (err) {
+        console.error("Failed to fetch products", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchUserProducts();
-  }, []);
+  }, [setUser]);
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this product?")) return;
@@ -44,7 +44,7 @@ const MyProducts = () => {
         setUser(prev => ({ ...prev, totalListings: Math.max(0, (prev.totalListings || 1) - 1) }));
       }
       toast.success("Product deleted successfully ✅");
-    } catch (err) {
+    } catch {
       toast.error("Failed to delete product");
     }
   };
@@ -54,7 +54,7 @@ const MyProducts = () => {
     try {
       await updateProductStatus(id, newStatus);
       setProducts(products.map(p => p._id === id ? { ...p, status: newStatus } : p));
-    } catch (err) {
+    } catch {
       toast.error("Failed to update status");
     }
   };

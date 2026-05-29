@@ -16,7 +16,7 @@ const ForgotPassword = () => {
     const normalizedEmail = email.toLowerCase().trim();
 
     if (!isValidEmail(normalizedEmail)) {
-      toast.error("Use a valid email address");
+      toast.error("Use your roll number email: rollnumber@anurag.edu.in");
       return;
     }
 
@@ -47,7 +47,7 @@ const ForgotPassword = () => {
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="email"
-              placeholder="you@college.edu"
+              placeholder="22A91A0501@anurag.edu.in"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               required

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { registerUser } from "../../services/authService";
-import useAuth from "../../hooks/useAuth";
 import Button from "../../components/ui/Button";
 import Card from "../../components/ui/Card";
 import Icon from "../../components/ui/Icon";
@@ -10,14 +9,13 @@ import { isValidEmail } from "../../utils/emailValidation";
 
 const Register = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
 
   const [form, setForm] = useState({
     name: "",
     email: "",
     password: "",
   });
-
+  
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
@@ -34,7 +32,7 @@ const Register = () => {
       const normalizedEmail = form.email.toLowerCase().trim();
 
       if (!isValidEmail(normalizedEmail)) {
-        toast.error("Use a valid public or institutional email");
+        toast.error("Use your roll number email: rollnumber@anurag.edu.in");
         return;
       }
 
@@ -47,15 +45,10 @@ const Register = () => {
         formData.append("avatar", image);
       }
 
-      const data = await registerUser(formData);
+      await registerUser(formData);
 
-      if (!data?.token) {
-        throw new Error("Unable to register");
-      }
-
-      login(data.token);
-      toast.success("Account created");
-      navigate("/");
+      toast.success("Registration successful! Please login to continue.");
+      navigate("/login");
     } catch (err) {
       toast.error(err.response?.data?.message || "Something went wrong");
     } finally {
@@ -103,7 +96,7 @@ const Register = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="you@college.edu"
+                placeholder="22A91A0501@anurag.edu.in"
                 value={form.email}
                 onChange={handleChange}
                 required
@@ -154,21 +147,12 @@ const Register = () => {
 
         <section className="hidden lg:block">
           <div className="max-w-xl justify-self-end">
-            <p className="text-sm font-bold uppercase tracking-widest text-blue-600">Start selling smarter</p>
-            <h1 className="mt-4 text-5xl font-black leading-tight">Turn unused campus essentials into quick, trusted deals.</h1>
+            <p className="text-sm font-bold uppercase tracking-widest text-blue-600">BUY - SELL - CONNECT</p>
+            <h1 className="mt-4 text-5xl font-black leading-tight">The easiest way to trade within your college community.</h1>
             <p className="mt-5 text-base leading-7 text-slate-600 dark:text-slate-400">
-              Create listings, save products, and message buyers from a modern dashboard designed for students.
+              A trusted platform for students to buy and sell within campus.
             </p>
-            <div className="mt-8 grid gap-4">
-              {["Create beautiful listings", "Chat directly with buyers", "Track wishlist and products"].map((item) => (
-                <Card key={item} className="flex items-center gap-4 p-4">
-                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-purple-50 text-purple-600 dark:bg-purple-950/40 dark:text-purple-200">
-                    <Icon name="spark" />
-                  </span>
-                  <p className="font-bold text-slate-950 dark:text-white">{item}</p>
-                </Card>
-              ))}
-            </div>
+            
           </div>
         </section>
       </div>

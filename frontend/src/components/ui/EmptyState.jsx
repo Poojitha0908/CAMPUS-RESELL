@@ -1,4 +1,5 @@
 import Button from "./Button";
+import { Link } from "react-router-dom";
 
 const EmptyState = ({ title, description, actionLabel, actionTo, icon }) => (
   <div className="rounded-xl border border-dashed border-slate-300 bg-white p-10 text-center shadow-sm dark:border-slate-700 dark:bg-slate-900">
@@ -8,7 +9,7 @@ const EmptyState = ({ title, description, actionLabel, actionTo, icon }) => (
     <h3 className="text-lg font-bold text-slate-950 dark:text-white">{title}</h3>
     <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-500 dark:text-slate-400">{description}</p>
     {actionLabel && actionTo && (
-      <Button as="a" href={actionTo} className="mt-5">
+      <Button as={Link} to={actionTo} className="mt-5">
         {actionLabel}
       </Button>
     )}

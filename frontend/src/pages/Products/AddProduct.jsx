@@ -29,7 +29,9 @@ const AddProduct = () => {
       try {
         const { data } = await API.get("/products");
         setAllProducts(data.products || []);
-      } catch (err) {}
+      } catch (err) {
+        console.error("Error loading products prices", err);
+      }
     };
     loadPrices();
   }, []);

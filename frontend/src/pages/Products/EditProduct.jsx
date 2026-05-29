@@ -20,7 +20,7 @@ const EditProduct = () => {
         const { title, description, price, category, images: existingImages } = data.product;
         setForm({ title, description, price, category });
         setPreviews(existingImages); // Show existing images as initial previews
-      } catch (err) {
+      } catch {
         navigate("/my-products");
       } finally {
         setLoading(false);

@@ -151,11 +151,17 @@ const Sidebar = ({ collapsed, mobileOpen, onCloseMobile, onToggleCollapse }) => 
           {user && (
             <div className="border-t border-border pt-4">
               <div className={`mb-3 flex items-center gap-3 rounded-xl bg-muted/50 p-3 border border-border ${collapsed ? "lg:justify-center" : ""}`}>
-                <img
-                  src={user?.avatar ? `http://localhost:5001/${user.avatar}` : "/default-avatar.png"}
-                  alt={user?.name || "User"}
-                  className="h-10 w-10 rounded-full border border-indigo-500/20 dark:border-indigo-500/30 object-cover"
-                />
+                {user?.avatar ? (
+                  <img
+                    src={`http://localhost:5000/${user.avatar}`}
+                    alt={user?.name || "User"}
+                    className="h-10 w-10 rounded-full border border-indigo-500/20 dark:border-indigo-500/30 object-cover shrink-0"
+                  />
+                ) : (
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-tr from-accent-indigo to-indigo-400 text-sm font-black text-white shadow-md shadow-indigo-500/20 border border-indigo-500/20 select-none uppercase">
+                    {(user?.name?.[0] || "U")}
+                  </span>
+                )}
                 <div className={`${collapsed ? "lg:hidden" : "block"} min-w-0`}>
                   <p className="truncate text-sm font-bold text-text-primary">{user?.name || "Campus User"}</p>
                   <p className="truncate text-xs text-text-secondary">{user?.email}</p>

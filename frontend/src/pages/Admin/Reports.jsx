@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
 import Loader from "../../components/Loader";
 import {
@@ -12,7 +13,7 @@ const Reports = () => {
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 📥 Fetch reports
+  //  Fetch reports
   const fetchReports = async () => {
     try {
       const data = await getReports();
@@ -28,34 +29,34 @@ const Reports = () => {
     fetchReports();
   }, []);
 
-  // 🔄 Update report status
+  //  Update report status
   const handleResolve = async (id) => {
     try {
       await updateReportStatus(id, "resolved");
       toast.success("Report resolved ✅");
       fetchReports();
-    } catch (err) {
+    } catch {
       toast.error("Failed to update status");
     }
   };
 
-  // 🔨 Ban user
+  //  Ban user
   const handleBanUser = async (userId) => {
     try {
       const data = await banUser(userId);
       toast.success(data.message);
       fetchReports();
-    } catch (err) {
+    } catch {
       toast.error("Failed to ban user");
     }
   };
 
-  // ❌ Delete product
+  //  Delete product
   const handleDeleteProduct = async (productId) => {
     if (!window.confirm("Are you sure you want to delete this product? This action cannot be undone.")) return;
     try {
       await deleteProduct(productId);
-      toast.success("Product deleted successfully ✅");
+      toast.success("Product deleted successfully ");
       fetchReports(); // Refresh list to show updated target status
     } catch (err) {
       console.error(err);

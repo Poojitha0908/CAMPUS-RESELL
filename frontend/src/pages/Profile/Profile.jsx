@@ -149,7 +149,17 @@ const Profile = () => {
       <div className="grid gap-6 lg:grid-cols-[360px_1fr]">
         <Card className="p-6 text-center">
           <div className="relative mx-auto w-36">
-            <img src={avatarSrc} alt={user.name} className="h-36 w-36 rounded-full border-4 border-blue-50 object-cover shadow-lg dark:border-slate-800" />
+            {preview || user?.avatar ? (
+              <img
+                src={preview || `http://localhost:5000/${user.avatar}`}
+                alt={user.name}
+                className="h-36 w-36 rounded-full border-4 border-blue-50 object-cover shadow-lg dark:border-slate-800"
+              />
+            ) : (
+              <span className="grid h-36 w-36 place-items-center rounded-full bg-gradient-to-tr from-accent-indigo to-indigo-400 text-5xl font-black text-white shadow-xl shadow-indigo-500/20 border-4 border-blue-50 dark:border-slate-800 select-none uppercase">
+                {(user?.name?.[0] || "U")}
+              </span>
+            )}
             <label className="absolute bottom-2 right-2 grid h-11 w-11 cursor-pointer place-items-center rounded-full bg-blue-600 text-white shadow-lg transition hover:scale-105 hover:bg-blue-700">
               <Icon name="edit" className="h-4 w-4" />
               <input type="file" accept="image/*" className="hidden" onChange={handleImageChange} />

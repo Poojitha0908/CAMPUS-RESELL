@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
-import { EMAIL_REGEX } from "../utils/validators.js";
+
+// Roll number format: alphanumeric characters (e.g. 22A91A0501@anurag.edu.in)
+const EMAIL_REGEX = /^[a-zA-Z0-9]+@anurag\.edu\.in$/i;
 
 const userSchema = new mongoose.Schema(
   {
@@ -15,7 +17,7 @@ const userSchema = new mongoose.Schema(
       unique: true,
       lowercase: true,
       trim: true,
-      match: [EMAIL_REGEX, "Use a valid public or institutional email"],
+      match: [EMAIL_REGEX, "Only rollnumber@anurag.edu.in email addresses are allowed"],
       index: true,
     },
 

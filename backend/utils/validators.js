@@ -1,7 +1,8 @@
-export const EMAIL_REGEX =
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-z]{2,}(?:\.[a-z]{2,})*$/i;
-
-export const validateEmail = (email) => EMAIL_REGEX.test(String(email || "").trim());
+export const validateEmail = (email) => {
+  const trimmed = String(email || "").trim().toLowerCase();
+  const EMAIL_REGEX = /^[a-zA-Z0-9]+@anurag\.edu\.in$/i;
+  return EMAIL_REGEX.test(trimmed);
+};
 
 export const validatePassword = (password) => password && password.length >= 6;
 
@@ -11,7 +12,7 @@ export const validateRegisterInput = ({ name, email, password }) => {
   }
 
   if (!validateEmail(email)) {
-    return "Use a valid email address, including public or institutional domains such as .edu, .in, .edu.in, .ac.in, or .res.in";
+    return "Only rollnumber@anurag.edu.in email addresses are allowed";
   }
 
   if (!validatePassword(password)) {
@@ -27,7 +28,7 @@ export const validateLoginInput = ({ email, password }) => {
   }
 
   if (!validateEmail(email)) {
-    return "Use a valid email address";
+    return "Only rollnumber@anurag.edu.in email addresses are allowed";
   }
 
   return null;

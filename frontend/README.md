@@ -1,52 +1,44 @@
 # Campus Resell Portal Frontend
 
-Modern React frontend for the Campus Resell marketplace. The interface is built as a production-style SaaS dashboard with a responsive sidebar shell, dark mode, reusable UI primitives, skeleton loading states, and toast-driven feedback.
+Frontend application for the Campus Resell Portal built using React, Vite, and Tailwind CSS.
 
-## Core Tech Stack
+This frontend provides the complete user interface for browsing products, managing listings, chatting with users, handling authentication, and accessing admin features.
 
-| Concern | Implementation |
-| --- | --- |
-| Framework | React 19 with Vite |
-| Routing | React Router DOM |
-| Styling | Tailwind CSS 4 with utility-first components |
-| State | React Context for auth, local component state for forms/views |
-| API | Axios service layer |
-| Realtime | Socket.IO Client |
-| Feedback | React Hot Toast |
+---
 
-## State Management
+## Features
 
-- `AuthContext` loads the active user from the JWT token and exposes `user`, `setUser`, `login`, `logout`, and `loading`.
-- Page-level state handles filters, forms, selected chat, message actions, image previews, and loading states.
-- Theme mode is managed by `AppLayout`, persisted in `localStorage`, and applied through the root `dark` class.
+- User authentication pages
+- Product listing interface
+- Search and filtering system
+- Wishlist management
+- Real-time chat UI
+- Admin dashboard pages
+- Dark mode support
+- Responsive design for desktop and mobile
+- Toast notifications and loading states
+
+---
+
+
 
 ## Folder Structure
 
 ```text
 src/
-  assets/                  Static images and Vite assets
-  components/
-    ui/                    Reusable Button, Card, Badge, Modal, Dropdown, Skeleton, EmptyState, Icon
-    AppLayout.jsx          Global shell with sidebar, header, theme toggle
-    Sidebar.jsx            Collapsible navigation drawer
-    ProductCard.jsx        Marketplace listing card
-    NotificationDropdown.jsx
-    ProtectedRoute.jsx
-    Loader.jsx
-  context/
-    AuthContext.jsx        Global authentication state
-  hooks/
-    useAuth.js             Auth context hook
-  pages/
-    Auth/                  Login, register, forgot/reset password
-    Products/              Home, details, add/edit, wishlist, my products
-    Chat/                  Messaging UI
-    Profile/               Account and profile management
-    Admin/                 Reports, users, dashboard
-  services/                Axios API functions and feature services
-  sockets/                 Socket.IO client setup
-  utils/                   Shared formatting and validation helpers
+│
+├── components/
+├── context/
+├── hooks/
+├── pages/
+├── services/
+├── sockets/
+├── utils/
+├── App.jsx
+└── main.jsx
 ```
+
+---
 
 ## Installation
 
@@ -54,32 +46,29 @@ src/
 npm install
 ```
 
-## Environment Setup
+---
 
-Create `frontend/.env` when deploying to a non-local API. The current service layer defaults to the local backend, but a deployment can expose:
-
-```env
-VITE_API_URL=http://localhost:5001/api
-VITE_SOCKET_URL=http://localhost:5001
-```
-
-If you introduce these variables, wire them through `src/services/api.js` and `src/sockets/socket.js`.
-
-## Development
+## Run Development Server
 
 ```bash
 npm run dev
 ```
 
-Open `http://localhost:5173`.
+Frontend runs on:
 
-## Build
+```text
+http://localhost:5173
+```
+
+---
+
+## Build For Production
 
 ```bash
 npm run build
 ```
 
-The production bundle is emitted to `dist/`.
+---
 
 ## Preview Production Build
 
@@ -87,15 +76,45 @@ The production bundle is emitted to `dist/`.
 npm run preview
 ```
 
-## Quality Checks
+---
 
-```bash
-npm run lint
+## Environment Variables
+
+Create a `.env` file if using a deployed backend:
+
+```env
+VITE_API_URL=http://localhost:5001/api
+VITE_SOCKET_URL=http://localhost:5001
 ```
 
-## Deployment Notes
+---
 
-- Run `npm run build` before deployment.
-- Configure the backend URL for the target environment.
-- Ensure uploaded media URLs are served from the backend or a CDN/object store.
-- Keep the `dark` class strategy enabled for predictable theme rendering.
+## Main Pages
+
+- Home
+- Login
+- Register
+- Product Details
+- Add Product
+- Wishlist
+- My Products
+- Chat
+- Profile
+- Admin Dashboard
+
+---
+
+## UI Features
+
+- Responsive layout
+- Dark mode
+- Sidebar navigation
+- Product cards
+- Toast notifications
+- Loading states
+- Empty state screens
+
+---
+
+## Author
+Poojitha Dasari
