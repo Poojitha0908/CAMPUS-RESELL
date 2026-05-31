@@ -40,7 +40,8 @@ const STATIC_FEATURED = [
     tagColor: "bg-rose-500",
     description:
       "Barely used MacBook Air M2 with 8GB RAM, 256GB SSD. Battery health 97%. Comes with original charger & box.",
-    image: "/macbook_air.jpg",
+    image:
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "feat-2",
