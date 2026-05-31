@@ -40,7 +40,7 @@ const newProducts = [
     views: 67,
     rating: 4.7,
     numReviews: 9,
-    imageUrl: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop",
+    imageUrl: null, // custom image — do not overwrite
     imageName: "calculator.png"
   },
   {
@@ -105,7 +105,7 @@ const newProducts = [
     views: 134,
     rating: 4.5,
     numReviews: 14,
-    imageUrl: "https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?q=80&w=800&auto=format&fit=crop",
+    imageUrl: null, // custom image — do not overwrite
     imageName: "desk_lamp.png"
   },
   {
@@ -146,6 +146,10 @@ async function main() {
   // Download all images
   console.log("📸 Downloading product images...");
   for (const product of newProducts) {
+    if (!product.imageUrl) {
+      console.log(`  ⏭️  ${product.imageName} (custom image — skipping download)`);
+      continue;
+    }
     const dest = path.join(uploadsDir, product.imageName);
     try {
       await downloadFile(product.imageUrl, dest);
