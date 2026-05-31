@@ -83,8 +83,8 @@ npm run preview
 Create a `.env` file if using a deployed backend:
 
 ```env
-VITE_API_URL=http://localhost:5001/api
-VITE_SOCKET_URL=http://localhost:5001
+VITE_API_URL=http://localhost:5000/api
+VITE_SOCKET_URL=http://localhost:5000
 ```
 
 ---

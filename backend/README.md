@@ -81,7 +81,7 @@ backend/
 Create a `.env` file inside backend folder:
 
 ```env
-PORT=5001
+PORT=5000
 DB_URL=your_mongodb_connection
 JWT_SECRET=your_secret_key
 EMAIL_USER=your_email
@@ -107,7 +107,7 @@ npm run dev
 Backend runs on:
 
 ```text
-http://localhost:5001
+http://localhost:5000
 ```
 
 ---
