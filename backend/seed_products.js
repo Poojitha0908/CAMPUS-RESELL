@@ -40,7 +40,7 @@ const newProducts = [
     views: 67,
     rating: 4.7,
     numReviews: 9,
-    imageUrl: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop",
     imageName: "calculator.png"
   },
   {
@@ -79,7 +79,7 @@ const newProducts = [
     views: 52,
     rating: 4.4,
     numReviews: 6,
-    imageUrl: "https://images.unsplash.com/photo-1503387873255-3a4a2345e824?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800&auto=format&fit=crop",
     imageName: "drawing_kit.png"
   },
   {
